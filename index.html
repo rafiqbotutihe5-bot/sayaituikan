@@ -1,89 +1,393 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAF PROJECT | Tech & Automation Hub</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        darkBg: '#0f172a',
-                        terminalBg: '#1e293b',
-                        accentGreen: '#10b981',
-                    }
-                }
-            }
+    <title>RAF Project | Official Website</title>
+    <style>
+        /* --- VARIABLE WARNA (THEMING) --- */
+        :root {
+            --bg-body: #0f172a;
+            --bg-navbar: rgba(15, 23, 42, 0.9);
+            --bg-card: #1e293b;
+            --bg-input: #334155;
+            --border-color: #334155;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-card-title: #f1f5f9;
+            --gradient-hero: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            --footer-bg: #020617;
         }
-    </script>
-</head>
-<body class="bg-darkBg text-slate-100 font-sans antialiased">
 
-    <!-- Navbar -->
-    <nav class="sticky top-0 z-50 bg-darkBg/80 backdrop-blur-md border-b border-slate-800 backdrop-filter px-6 py-4">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <a href="#" class="text-xl font-bold tracking-wider text-accentGreen">RAF <span class="text-white">PROJECT</span></a>
-            <div class="space-x-6 text-sm font-medium text-slate-400">
-                <a href="#about" class="hover:text-white transition-colors">Tentang</a>
-                <a href="#projects" class="hover:text-white transition-colors">Proyek</a>
-                <a href="#console" class="hover:text-white transition-colors">Konsol</a>
+        [data-theme="light"] {
+            --bg-body: #f8fafc;
+            --bg-navbar: rgba(255, 255, 255, 0.9);
+            --bg-card: #ffffff;
+            --bg-input: #f1f5f9;
+            --border-color: #cbd5e1;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --text-card-title: #1e293b;
+            --gradient-hero: radial-gradient(circle at center, #e2e8f0 0%, #f8fafc 100%);
+            --footer-bg: #f1f5f9;
+        }
+
+        /* --- RESET & BASIC STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- NAVBAR --- */
+        header {
+            background-color: var(--bg-navbar);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #38bdf8;
+            letter-spacing: 1px;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* --- TOGGLE BUTTON --- */
+        .theme-toggle-btn {
+            background: none;
+            border: 2px solid #38bdf8;
+            color: #38bdf8;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .theme-toggle-btn:hover {
+            background-color: #38bdf8;
+            color: #fff;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            background: var(--gradient-hero);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #38bdf8, #4f46e5);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4);
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.6);
+        }
+
+        /* --- SECTION STRUCTURE --- */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: #38bdf8;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- CARD GRID --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+        }
+
+        .card h3 {
+            margin-bottom: 0.8rem;
+            color: var(--text-card-title);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- CONTACT FORM --- */
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-card-title);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-input);
+            color: var(--text-main);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+        }
+
+        .contact-container .btn {
+            width: 100%;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--footer-bg);
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 5rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <div class="logo">RAF PROJECT</div>
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#projects">Proyek</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+                <button class="theme-toggle-btn" id="themeToggle">
+                    <span id="themeIcon">☀️</span> <span id="themeText">Light</span>
+                </button>
             </div>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header id="about" class="max-w-6xl mx-auto px-6 py-20 text-center flex flex-col items-center justify-center min-h-[70vh]">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-xs text-slate-400 mb-6 border border-slate-700">
-            <span class="w-2 h-2 rounded-full bg-accentGreen animate-pulse"></span>
-            Active Development Hub
-        </div>
-        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-500">
-            Automating Ideas. <br>Building Infrastructure.
-        </h1>
-        <p class="max-w-2xl text-slate-400 text-base md:text-lg mb-8 leading-relaxed">
-            Pusat pengembangan otomasi bot Telegram, manajemen server VPS jarak jauh, implementasi jaringan cerdas, dan pemrograman mikrokontroler hardware.
-        </p>
-        <a href="#console" class="bg-accentGreen hover:bg-emerald-600 text-slate-900 font-semibold px-6 py-3 rounded-lg transition-all shadow-lg shadow-emerald-900/20 text-sm">
-            Buka Konsol Interaktif
-        </a>
     </header>
 
-    <!-- Project Showcase Section -->
-    <section id="projects" class="max-w-6xl mx-auto px-6 py-20 border-t border-slate-900">
-        <div class="mb-12 text-center md:text-left">
-            <h2 class="text-2xl font-bold text-white mb-2">Fokus & Ekosistem</h2>
-            <p class="text-slate-400 text-sm">Beberapa pilar teknologi inti yang dikembangkan di RAF PROJECT.</p>
-        </div>
+    <section id="home" class="hero">
+        <h1>Kreativitas Tanpa Batas</h1>
+        <p>Selamat datang di RAF Project. Kami membangun solusi digital inovatif, modern, dan dirancang khusus untuk masa depan bisnis Anda.</p>
+        <a href="#projects" class="btn">Lihat Proyek Kami</a>
+    </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Card 1 -->
-            <div class="p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-all group">
-                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-accentGreen mb-4 font-bold">🤖</div>
-                <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-accentGreen transition-colors">Bot Automation</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Pengembangan bot Telegram berbasis Python untuk manajemen server jarak jauh, notifikasi real-time, dan sistem asisten otomatis.</p>
+    <section id="about" class="section">
+        <h2 class="section-title">Tentang RAF Project</h2>
+        <div style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--text-muted);">
+            <p>RAF Project adalah sebuah wadah kreatif yang berfokus pada pengembangan teknologi, desain modern, dan solusi digital. Kami berkomitmen untuk membantu bisnis, komunitas, maupun individu dalam mewujudkan ide-ide hebat mereka menjadi kenyataan lewat eksekusi kode dan desain yang presisi.</p>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <h2 class="section-title">Apa Yang Kami Lakukan</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Web Development</h3>
+                <p>Pembuatan website landing page, e-commerce, hingga web sistem kustom yang responsif, cepat, dan aman.</p>
             </div>
-            <!-- Card 2 -->
-            <div class="p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-all group">
-                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-accentGreen mb-4 font-bold">🖥️</div>
-                <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-accentGreen transition-colors">VPS & Networking</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Konfigurasi jaringan aman, deployment script di Virtual Private Server, kontrol jarak jauh, dan optimasi performa sistem backend.</p>
+            <div class="card">
+                <h3>UI/UX Design</h3>
+                <p>Merancang antarmuka aplikasi yang intuitif, ramah pengguna, dan estetis agar konversi produk meningkat.</p>
             </div>
-            <!-- Card 3 -->
-            <div class="p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-all group">
-                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-accentGreen mb-4 font-bold">⚡</div>
-                <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-accentGreen transition-colors">Hardware Integration</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Rancang bangun sirkuit digital menggunakan papan mikrokontroler Arduino atau ESP32 untuk menjembatani software dan hardware fisik.</p>
+            <div class="card">
+                <h3>Digital Solutions</h3>
+                <p>Konsultasi dan optimasi digital untuk mendongkrak performa proyek atau bisnismu di internet.</p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="max-w-6xl mx-auto px-6 py-8 border-t border-slate-900 text-center text-xs text-slate-500">
-        <p>&copy; 2026 RAF PROJECT. All rights reserved.</p>
+    <section id="contact" class="section">
+        <h2 class="section-title">Hubungi Kami</h2>
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <p style="color: var(--text-muted);">Punya ide seru atau proyek yang ingin didiskusikan? Kirimkan pesanmu di bawah ini!</p>
+        </div>
+
+        <div class="contact-container">
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Alamat Email</label>
+                    <input type="email" id="email" name="email" placeholder="nama@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Pesan Anda</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tuliskan detail proyek atau pertanyaan Anda di sini..." required></textarea>
+                </div>
+                <button type="submit" class="btn">Kirim Pesan Sekarang</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 RAF Project. All rights reserved.</p>
     </footer>
 
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
+
+        // Cek preferensi tema user sebelumnya di local storage
+        const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        updateToggleStyle(currentTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                theme = 'light';
+            } else {
+                theme = 'dark';
+            }
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            updateToggleStyle(theme);
+        });
+
+        function updateToggleStyle(theme) {
+            if (theme === 'light') {
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'Dark';
+            } else {
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Light';
+            }
+        }
+    </script>
 </body>
 </html>
