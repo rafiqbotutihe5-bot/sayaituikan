@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAF PROJECT | Tech & Automation Hub</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0f172a',
+                        terminalBg: '#1e293b',
+                        accentGreen: '#10b981',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-darkBg text-slate-100 font-sans antialiased">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-darkBg/80 backdrop-blur-md border-b border-slate-800 backdrop-filter px-6 py-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="#" class="text-xl font-bold tracking-wider text-accentGreen">RAF <span class="text-white">PROJECT</span></a>
+            <div class="space-x-6 text-sm font-medium text-slate-400">
+                <a href="#about" class="hover:text-white transition-colors">Tentang</a>
+                <a href="#projects" class="hover:text-white transition-colors">Proyek</a>
+                <a href="#console" class="hover:text-white transition-colors">Konsol</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="about" class="max-w-6xl mx-auto px-6 py-20 text-center flex flex-col items-center justify-center min-h-[70vh]">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-xs text-slate-400 mb-6 border border-slate-700">
+            <span class="w-2 h-2 rounded-full bg-accentGreen animate-pulse"></span>
+            Active Development Hub
+        </div>
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-500">
+            Automating Ideas. <br>Building Infrastructure.
+        </h1>
+        <p class="max-w-2xl text-slate-400 text-base md:text-lg mb-8 leading-relaxed">
+            Pusat pengembangan otomasi bot Telegram, manajemen server VPS jarak jauh, implementasi jaringan cerdas, dan pemrograman mikrokontroler hardware.
+        </p>
+        <a href="#console" class="bg-accentGreen hover:bg-emerald-600 text-slate-900 font-semibold px-6 py-3 rounded-lg transition-all shadow-lg shadow-emerald-900/20 text-sm">
+            Buka Konsol Interaktif
+        </a>
+    </header>
+
+    <!-- Project Showcase Section -->
+    <section id="projects" class="max-w-6xl mx-auto px-6 py-20 border-t border-slate-900">
+        <div class="mb-12 text-center md:text-left">
+            <h2 class="text-2xl font-bold text-white mb-2">Fokus & Ekosistem</h2>
+            <p class="text-slate-400 text-sm">Beberapa pilar teknologi inti yang dikembangkan di RAF PROJECT.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-all group">
+                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-accentGreen mb-4 font-bold">🤖</div>
+                <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-accentGreen transition-colors">Bot Automation</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Pengembangan bot Telegram berbasis Python untuk manajemen server jarak jauh, notifikasi real-time, dan sistem asisten otomatis.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-all group">
+                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-accentGreen mb-4 font-bold">🖥️</div>
+                <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-accentGreen transition-colors">VPS & Networking</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Konfigurasi jaringan aman, deployment script di Virtual Private Server, kontrol jarak jauh, dan optimasi performa sistem backend.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-all group">
+                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-accentGreen mb-4 font-bold">⚡</div>
+                <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-accentGreen transition-colors">Hardware Integration</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Rancang bangun sirkuit digital menggunakan papan mikrokontroler Arduino atau ESP32 untuk menjembatani software dan hardware fisik.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="max-w-6xl mx-auto px-6 py-8 border-t border-slate-900 text-center text-xs text-slate-500">
+        <p>&copy; 2026 RAF PROJECT. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
