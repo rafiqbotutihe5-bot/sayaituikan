@@ -194,17 +194,18 @@
             gap: 2rem;
         }
 
-        .card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-        }
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    display: block;        /* Membuat seluruh area kartu bisa diklik */
+    text-decoration: none; /* Menghilangkan garis bawah teks default link */
+}
 
-        /* Kartu klik ya ges*/
-        .card.clickable-card {
-            cursor: pointer;
-        }
+.card.clickable-card {
+    cursor: pointer;       /* Mengubah kursor jadi lambang jari/klik */
+}
 
         .card:hover {
             transform: translateY(-5px);
